@@ -15,7 +15,7 @@ function App() {
           target="_blank"
           rel="noopener noreferrer"
         >
-          Learn React
+          Learn React on {process.env.REACT_APP_BACKEND_WEB_SERVICE}
         </a>
       </header>
     </div>
