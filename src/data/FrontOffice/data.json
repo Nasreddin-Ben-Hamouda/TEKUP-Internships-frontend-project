@@ -1,0 +1,92 @@
+{
+  "Header": {
+    "title": "",
+    "paragraph": ""
+  },
+  "About": {
+    "paragraph": "TEK-UP is an institution that offers the opportunity to benefit from an academic education which is recognized and valued around the world.\n\nThe university awards the National Diploma in Computer Engineering or Telecommunications.",
+    "Why": [
+      "Quality of studies: TEK-UP offers a high quality-learning environment. Education at the University covers specific skills and scientific methods that will enable graduates to improve their qualifications.",
+      "Diverse financing methods: There are many ways to finance your studies at TEK-UP. To help you afford a suitable education regardless your financial situation, TEK-UP may grant you a specific financing method where you can pay for your studies after graduation once you get your job.",
+      "International Certifications: every student has the opportunity to sit for almost 12 international certifications such as CCNA, CCNP, LPIC-1, LPIC-2, Microsoft MCP, Oracle JAVA, etc.Number Limited Students Policy: For each class, the number of students cannot exceed 24 persons.",
+      "Number Limited Students Policy: For each class, the number of students cannot exceed 24 persons."
+    ]
+  },
+  "Gallery": [
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/01-large.jpg",
+      "smallImage": "img/portfolio/01-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/02-large.jpg",
+      "smallImage": "img/portfolio/02-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/03-large.jpg",
+      "smallImage": "img/portfolio/03-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/04-large.jpg",
+      "smallImage": "img/portfolio/04-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/05-large.jpg",
+      "smallImage": "img/portfolio/05-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/06-large.jpg",
+      "smallImage": "img/portfolio/06-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/07-large.jpg",
+      "smallImage": "img/portfolio/07-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/08-large.jpg",
+      "smallImage": "img/portfolio/08-small.jpg"
+    },
+    {
+      "title": "Project Title",
+      "largeImage": "img/portfolio/09-large.jpg",
+      "smallImage": "img/portfolio/09-small.jpg"
+    }
+  ],
+  "Contact": {
+    "address": "4321 California St, San Francisco, CA 12345 ",
+    "phone": "+1 123 456 1234",
+    "email": "info@company.com",
+    "facebook": "",
+    "twitter": "",
+    "youtube": ""
+  },
+  "Features": [
+    {
+      "icon": "fa fa-comments-o",
+      "title": "Communication between student,teacher and staff",
+      "text": "This platform makes it possible to put information on the internships visible to all students."
+    },
+    {
+      "icon": "fa fa-bullhorn",
+      "title": "Internship offers",
+      "text": "This platform allows TEK-UP students, teachers and staff to submit interesting internship offers."
+    },
+    {
+      "icon": "fa fa-group",
+      "title": "Easy defense planning",
+      "text": "This platform allows TEK-UP staff to easily plan internship defenses"
+    },
+    {
+      "icon": "fa fa-magic",
+      "title": "Internship Management",
+      "text": "This platform makes it easy to manage internships at TEK-UP"
+    }
+  ]
+}
