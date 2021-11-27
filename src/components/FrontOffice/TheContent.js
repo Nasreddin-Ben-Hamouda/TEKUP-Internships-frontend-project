@@ -4,11 +4,11 @@ import { Spin} from 'antd';
 import Layout from '../../hoc/Layouts/FrontOffice/Layout'
 import routes from '../../routes/FrontOffice/routes'
 import '../../styles/FrontOffice/bootstrap.css';
-import '../../styles/FrontOffice/style.css';
 import '../../assets/FrontOffice/fonts/font-awesome/css/font-awesome.css';
 import '../../styles/FrontOffice/nivo-lightbox/nivo-lightbox.css';
 import '../../styles/FrontOffice/nivo-lightbox/default.css';
-
+import '../../styles/FrontOffice/style.css';
+import Scroll from "../../components/FrontOffice/Scroll"
 
 
 const loading = (
@@ -16,10 +16,11 @@ const loading = (
 )
 
 const TheContent = (props) => {
-    return (
-            <Layout>
-                <Suspense fallback={loading}>
 
+    return (
+            <Layout openModal={()=>console.log("im here")}>
+                <Scroll showBelow={250} />
+                <Suspense fallback={loading}>
                     <Switch>
                         {
 
@@ -37,6 +38,7 @@ const TheContent = (props) => {
                             })
 
                         }
+
                     </Switch>
                 </Suspense>
             </Layout>

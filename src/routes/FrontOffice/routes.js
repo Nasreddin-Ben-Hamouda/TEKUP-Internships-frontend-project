@@ -1,9 +1,11 @@
 import {lazy} from 'react';
 
 const Home =lazy(() => import('../../views/FrontOffice/Home/Home'));
+const Test =lazy(() => import('../../views/FrontOffice/Home/test'));
 
 const routes = [
-    { path: '/',exact: true, name: 'home', component: Home },
+    { path: '/home',exact: true, component: Home },
+    { path: '/home/test',exact: true, component: Test },
 ];
 
 export default routes;

@@ -70,13 +70,13 @@
   "Features": [
     {
       "icon": "fa fa-comments-o",
-      "title": "Communication between student,teacher and staff",
-      "text": "This platform makes it possible to put information on the internships visible to all students."
+      "title": "Visible information",
+      "text": "This platform makes internship information visible to all students."
     },
     {
       "icon": "fa fa-bullhorn",
       "title": "Internship offers",
-      "text": "This platform allows TEK-UP students, teachers and staff to submit interesting internship offers."
+      "text": "This platform allows all tekupers to submit interesting internship offers."
     },
     {
       "icon": "fa fa-group",
