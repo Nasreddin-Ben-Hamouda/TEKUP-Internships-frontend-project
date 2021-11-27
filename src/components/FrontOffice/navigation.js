@@ -2,7 +2,7 @@ import logo from "../../assets/FrontOffice/img/logo-tekup.png"
 const Navigation = (props) => {
   return (
     <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
-      <div className='container'>
+      <div className='container' id={"page-top"}>
         <div className='navbar-header'>
           <button
             type='button'
@@ -16,9 +16,12 @@ const Navigation = (props) => {
             <span className='icon-bar'></span>{' '}
             <span className='icon-bar'></span>{' '}
           </button>
-          <a className='navbar-brand page-scroll' href='#page-top'>
-            <img src={logo} className="img-responsive" alt="" style={{width:"100%",height:"55px",marginTop:"-20px"}} />
-          </a>{' '}
+          {/*<Link to={"/administrator"}>*/}
+          {/*  <img src={logo} className="img-responsive" alt="" style={{width:"100%",height:"55px",marginTop:"-20px"}} />*/}
+          {/*</Link>*/}
+          <a href="#page-top">
+            <img src={logo} className="img-responsive" alt="" style={{maxWidth:"30%",marginLeft:"-10%"}} />
+          </a>
         </div>
 
         <div

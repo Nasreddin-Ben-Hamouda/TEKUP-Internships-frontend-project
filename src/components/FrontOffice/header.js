@@ -1,7 +1,7 @@
 const Header = (props) => {
   return (
     <header id='header'>
-      <div className='intro'>
+      <div className='intro' >
         <div className='overlay'>
           <div className='container'>
             <div className='row'>

@@ -3,15 +3,41 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@ant-design/icons": "^4.7.0",
+    "@coreui/chartjs": "^2.0.0",
+    "@coreui/coreui": "^3.4.0",
+    "@coreui/icons": "^2.0.1",
+    "@coreui/icons-react": "^1.1.0",
+    "@coreui/react": "^3.4.6",
+    "@coreui/react-chartjs": "^1.1.0",
+    "@coreui/utils": "^1.3.1",
+    "@fullcalendar/core": "^5.7.0",
+    "@fullcalendar/daygrid": "^5.7.0",
+    "@fullcalendar/interaction": "^5.7.0",
+    "@fullcalendar/react": "^5.7.0",
+    "@hookform/resolvers": "^2.4.0",
+    "@material-ui/core": "^4.11.3",
+    "@material-ui/icons": "^4.11.2",
+    "@material-ui/system": "^4.11.3",
     "@testing-library/jest-dom": "^5.15.1",
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "antd": "^4.15.3",
+    "axios": "^0.21.1",
+    "cogo-toast": "^4.2.3",
+    "css-vars-ponyfill": "^2.4.3",
+    "node-sass": "^6.0.1",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "react-hook-form": "^7.4.1",
+    "react-popconfirm": "^0.1.1",
+    "react-redux": "^7.2.6",
     "react-router-dom": "^5.2.0",
     "react-scripts": "^4.0.3",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.0",
     "smooth-scroll": "^16.1.3",
+    "styled-components": "^5.2.3",
     "web-vitals": "^1.1.2"
   },
   "scripts": {
@@ -40,7 +66,6 @@
   },
   "devDependencies": {
     "eslint-plugin-disable": "^2.0.1",
-    "eslint-plugin-react-hooks": "^4.2.0",
-    "sass": "^1.43.5"
+    "eslint-plugin-react-hooks": "^4.2.0"
   }
 }
