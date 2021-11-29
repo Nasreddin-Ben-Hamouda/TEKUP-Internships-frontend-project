@@ -12,8 +12,8 @@ export const scroll = new SmoothScroll('a[href*="#"]', {
 const Layout = (props) => {
     return (
         <React.Fragment>
-            <Navigation/>
-            <Header openModal={props.openModal} data={JsonData.Header}/>
+            <Navigation />
+            <Header data={JsonData.Header}/>
                 {props.children}
             <Contact data={JsonData.Contact} />
         </React.Fragment>

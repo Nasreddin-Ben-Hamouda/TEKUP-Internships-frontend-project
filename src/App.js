@@ -1,6 +1,8 @@
 import React, { lazy, Suspense} from "react";
 import { Spin} from 'antd';
 import {Route, Switch,Redirect} from "react-router-dom";
+import withErrorHandler from "./hoc/WithErrorHandler/withErrorHandler";
+import axios from "./axios/web-service";
 const FrontOfficeContent=lazy(() => import('./components/FrontOffice/TheContent'))
 const AdminContent=lazy(() => import('./components/BackOffices/Admin/TheContent'))
 const TeacherContent=lazy(() => import('./components/BackOffices/Teacher/TheContent'))
@@ -22,4 +24,4 @@ function App() {
   );
 }
 
-export default App;
+export default withErrorHandler(App,axios);

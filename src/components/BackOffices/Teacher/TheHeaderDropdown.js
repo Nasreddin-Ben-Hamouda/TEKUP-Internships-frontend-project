@@ -42,7 +42,7 @@ const TheHeaderDropdown = (props) => {
            Profile
         </CDropdownItem>
         <CDropdownItem divider />
-        <CDropdownItem onClick={()=>{console.log("logout here !")}}>
+        <CDropdownItem onClick={()=>{window.location.replace("/");}}>
           <CIcon name="cil-lock-locked" className="mfe-2" />
               Logout
         </CDropdownItem>

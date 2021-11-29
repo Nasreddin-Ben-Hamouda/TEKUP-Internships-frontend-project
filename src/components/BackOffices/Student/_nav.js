@@ -38,7 +38,7 @@ export const _nav=
     _tag: 'CSidebarNavItem',
     name: 'Defenses',
     to: `/student`,
-    icon:'cilFile' ,
+    icon:'cilLaptop' ,
   },
   {
     _tag: 'CSidebarNavItem',
