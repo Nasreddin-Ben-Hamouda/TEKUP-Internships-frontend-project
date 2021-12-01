@@ -80,7 +80,7 @@ const TheHeader = (props) => {
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
                     <CHeaderNavLink to={"/administrator/dashboard"}>
-                        <CIcon name="cilCalendar" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon name="cilLaptop" customClasses="c-sidebar-nav-icon"/>
                         Defenses
                     </CHeaderNavLink>
                 </CHeaderNavItem>

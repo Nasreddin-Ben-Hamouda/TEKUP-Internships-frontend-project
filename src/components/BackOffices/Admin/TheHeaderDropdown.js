@@ -8,6 +8,8 @@ import {
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
 import userImg from '../../../assets/BackOffices/img/user.png'
+import {useDispatch} from "react-redux";
+import * as actions from "../../../store/actions/auth/User";
 
 const TheHeaderDropdown = (props) => {
   // let img=null;
@@ -16,6 +18,8 @@ const TheHeaderDropdown = (props) => {
   // }else{
   //   img=userImg;
   // }
+  const dispatch = useDispatch();
+
   return (
     <CDropdown
       inNav
@@ -42,7 +46,7 @@ const TheHeaderDropdown = (props) => {
            Profile
         </CDropdownItem>
         <CDropdownItem divider />
-        <CDropdownItem onClick={()=>{console.log("logout here !")}}>
+        <CDropdownItem onClick={()=>{dispatch(actions.logout);window.location.replace("/");}}>
           <CIcon name="cil-lock-locked" className="mfe-2" />
               Logout
         </CDropdownItem>

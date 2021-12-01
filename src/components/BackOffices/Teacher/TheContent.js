@@ -10,6 +10,7 @@ import TheLayout from "../../../hoc/Layouts/BackOffices/Teacher/Layout"
 import routes from '../../../routes/BackOffices/Teacher/routes'
 import { icons } from '../../../assets/BackOffices/icons'
 import '../../../styles/BackOffices/style.scss';
+import {useSelector} from "react-redux";
 React.icons = icons
 
 const loading = (
@@ -19,7 +20,10 @@ const loading = (
 )
 
 const TheContent = (props) => {
-
+    let user = useSelector(state => state.user.user);
+    if(user.roleDTO.title!=="TEACHER"){
+        window.location.replace('/')
+    }
   return (
     <TheLayout {...props}>
         <main className="c-main">

@@ -68,7 +68,7 @@ const TheHeader = (props) => {
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
                     <CHeaderNavLink to={"/student/dashboard"}>
-                        <CIcon name="cilLayers" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon name="cilMap" customClasses="c-sidebar-nav-icon"/>
                         Offers
                     </CHeaderNavLink>
                 </CHeaderNavItem>
@@ -80,7 +80,7 @@ const TheHeader = (props) => {
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
                     <CHeaderNavLink to={"/student/dashboard"}>
-                        <CIcon name="cilCalendar" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon name="cilLaptop" customClasses="c-sidebar-nav-icon"/>
                         Defenses
                     </CHeaderNavLink>
                 </CHeaderNavItem>
