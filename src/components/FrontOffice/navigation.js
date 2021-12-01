@@ -1,6 +1,25 @@
 import logo from "../../assets/FrontOffice/img/logo-tekup.png"
+import {useDispatch, useSelector} from "react-redux";
+import * as actions from "../../store/actions/auth/User";
 
 const Navigation = (props) => {
+  let user = useSelector(state => state.user.user)
+  let authToken = useSelector(state => state.user.authToken)
+  const dispatch = useDispatch();
+
+  let path="/";
+  if(user && authToken){
+    switch(user.roleDTO.title){
+      case 'ADMIN':
+        path="/administrator"
+        break;
+      case 'TEACHER':
+        path="/teacher"
+        break;
+      default:
+        path="/student";
+    }
+  }
   return (
     <nav id='menu' className='navbar navbar-default navbar-fixed-top'>
       <div className='container' id={"page-top"}>
@@ -51,21 +70,26 @@ const Navigation = (props) => {
                 Contact
               </a>
             </li>
-            <li>
-              <button  id="authButton" style={{marginLeft:"20px"}} data-toggle="modal" data-target="#exampleModal">Sign In</button>
-            </li>
-            {/*<li>*/}
-            {/*  <div className="dropdown" >*/}
-            {/*    <button className="dropbtn" id="authButton">Dropdown</button>*/}
-            {/*    <div className="dropdown-content">*/}
-            {/*      /!*<Link to="">Link 1</Link>*!/*/}
-            {/*      <ul>*/}
-            {/*        <li onClick={()=>console.log("space")}>Link 2</li>*/}
-            {/*        <li  onClick={()=>console.log("logout")} >Link 3</li>*/}
-            {/*      </ul>*/}
-            {/*    </div>*/}
-            {/*  </div>*/}
-            {/*</li>*/}
+            {user && authToken ?
+
+                <li>
+                  <div className="dropdown" >
+                    <button className="dropbtn" id="authButton">{user.firstName+" "+user.lastName}</button>
+                    <div className="dropdown-content">
+                      {/*<Link to="">Link 1</Link>*/}
+                      <ul>
+                        <li onClick={()=>window.location.replace(path)}>Your space</li>
+                        {/*<li  onClick={()=>{dispatch(actions.logout);history.push("/")}}>Logout</li>*/}
+                        <li  onClick={()=>{dispatch(actions.logout);window.location.replace("/")}}>Logout</li>
+                      </ul>
+                    </div>
+                  </div>
+                </li>
+                :
+                <li>
+                <button  id="authButton" style={{marginLeft:"20px"}} data-toggle="modal" data-target="#exampleModal">Sign In</button>
+                </li>
+            }
 
           </ul>
         </div>

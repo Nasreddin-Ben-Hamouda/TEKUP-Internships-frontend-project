@@ -1,17 +1,18 @@
 import { useState, useEffect } from 'react';
 
-export default  httpClient =>{
+const HttpErrorHandler= httpClient =>{
     const [error, setError] = useState(null);
 
     const reqInterceptor = httpClient.interceptors.request.use(req => {
-        setError(null);
-        if(localStorage.getItem('authToken')){
-            req.headers={
-                'Authorization': `bearer ${localStorage.getItem('authToken')}`
+            setError(null);
+            if(localStorage.getItem('authToken')){
+                req.headers={
+                    'Authorization': `Bearer ${localStorage.getItem('authToken')}`
+                }
             }
-        }
-        return req;
-    });
+            return req;
+        });
+
     const resInterceptor = httpClient.interceptors.response.use(
         res => res,
         err => {
@@ -25,7 +26,7 @@ export default  httpClient =>{
             httpClient.interceptors.request.eject(reqInterceptor);
             httpClient.interceptors.response.eject(resInterceptor);
         };
-    }, [reqInterceptor, resInterceptor]);
+    }, [reqInterceptor, resInterceptor,httpClient.interceptors.request,httpClient.interceptors.response]);
 
     const errorConfirmedHandler = () => {
         setError(null);
@@ -33,3 +34,4 @@ export default  httpClient =>{
 
     return [error, errorConfirmedHandler];
 }
+export default HttpErrorHandler;

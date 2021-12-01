@@ -1,5 +1,5 @@
 import React, { Suspense,lazy,useEffect} from 'react'
-import {useSelector} from "react-redux";
+import { useSelector} from "react-redux";
 import {Route, Switch} from "react-router-dom";
 import { Spin} from 'antd';
 import Layout from '../../hoc/Layouts/FrontOffice/Layout'
@@ -9,7 +9,6 @@ import '../../assets/FrontOffice/fonts/font-awesome/css/font-awesome.css';
 import '../../styles/FrontOffice/nivo-lightbox/nivo-lightbox.css';
 import '../../styles/FrontOffice/nivo-lightbox/default.css';
 import '../../styles/FrontOffice/style.css';
-import cogoToast from 'cogo-toast';
 import Scroll from "../../components/FrontOffice/Scroll"
 const Login=lazy(()=>import('./Login'))
 
@@ -39,8 +38,9 @@ const TheContent = (props) => {
         if(redirect){
             if(user){
                 //closeOneModal("exampleModal")
-                cogoToast.success("Welcome back !", {position: "top-right"})
-                window.location.replace(redirect)
+                //cogoToast.success("Welcome back !", {position: "top-right"})
+                window.location.replace(redirect);
+                //props.history.push({pathname:redirect})
                 //dispatch(actions.authFinish())
             }
         }

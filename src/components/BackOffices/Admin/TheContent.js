@@ -10,6 +10,7 @@ import TheLayout from "../../../hoc/Layouts/BackOffices/Admin/Layout"
 import routes from '../../../routes/BackOffices/Admin/routes'
 import { icons } from '../../../assets/BackOffices/icons'
 import '../../../styles/BackOffices/style.scss';
+import {useSelector} from "react-redux";
 React.icons = icons
 
 const loading = (
@@ -21,7 +22,10 @@ const loading = (
 const TheContent = (props) => {
     // let linkNode=document.querySelector('style,link[href*="bootstrap.css"]');
     // linkNode.parentNode.removeChild(linkNode)
-
+    let user = useSelector(state => state.user.user);
+    if(user.roleDTO.title!=="ADMIN"){
+        window.location.replace('/')
+    }
   return (
     <TheLayout {...props}>
         <main className="c-main">

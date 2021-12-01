@@ -10,7 +10,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
         const [error, clearError] = useHttpErrorHandler(axios);
         useEffect(()=>{
             if(error){
-                if(error.data){
+                if(error.status){
                     switch (error.status){
                         case 500:cogoToast.error("Server is down",{position:"top-right"}).then(clearError);
                             break;
@@ -18,21 +18,19 @@ const withErrorHandler = (WrappedComponent, axios) => {
                             break;
                         case 404:cogoToast.error(error.data?error.data:"Not Found Error",{position:"top-right"}).then(clearError);
                             break;
-                        case 409 :cogoToast.error(error.data,{position:"top-right"}).then(clearError)
-                            break;
                         case 401 :{
-                            cogoToast.error(error.data ?error.data:"Please login",{position:"top-right"}).then(clearError)
+                            cogoToast.error("Sign in please",{position:"top-right"}).then(clearError)
                             dispatch(actions.logout());
                             break;
                         }
-                        //default:cogoToast.error("Something went wrong",{position:"top-right"}).then(clearError);
+                        default:cogoToast.error("Something went wrong,please refresh the page",{position:"top-right"}).then(clearError);
                     }
                 }else{
                     cogoToast.error(error,{position:"top-right"}).then(clearError)
                 }
 
             }
-        },[error])
+        },[error,clearError,dispatch])
 
 
 

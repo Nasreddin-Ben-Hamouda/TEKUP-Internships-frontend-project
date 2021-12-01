@@ -54,32 +54,27 @@ export const logout = () => {
 
 export const login = (email, password) => {
     return dispatch => {
+        dispatch(logout())
         dispatch(loginStart());
         const data = {
             email: email,
             password: password
         };
-        axios.post('/auth/login', data)
+        axios.post('/user/login', data)
             .then(response => {
                 localStorage.setItem('authToken', response.data.authToken);
                 let redirect = null;
-                if (response.data.role === "ADMIN") {
+                if (response.data.user.roleDTO.title === "ADMIN") {
                     redirect = "/administrator"
                 } else {
-                    if (response.data.role === "TEACHER") {
+                    if (response.data.user.roleDTO.title === "TEACHER") {
                         redirect = "/teacher"
                     } else {
                         redirect = "/student"
                     }
                 }
                 dispatch(loginSuccess(
-                    {
-                        id: response.data.id,
-                        firstName: response.data.firstName,
-                        lastName: response.data.lastName,
-                        email: response.data.email,
-                        role: response.data.role
-                    },
+                    response.data.user,
                     response.data.authToken,
                     redirect));
             })
@@ -96,7 +91,7 @@ export const getAuthenticatedUser = () => {
             if (!authToken) {
                 dispatch(logout());
             } else {
-                axios.get('/auth/whoami')
+                axios.get('/user/whoami')
                     .then((response) => {
                         dispatch(loginSuccess(response.data,authToken,null));
                         dispatch(takeReadyTrue())
@@ -104,8 +99,6 @@ export const getAuthenticatedUser = () => {
                     .catch(()=>{
                         dispatch(takeReadyTrue())
                     })
-
-
             }
 
     };
