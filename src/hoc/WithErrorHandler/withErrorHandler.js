@@ -16,7 +16,8 @@ const withErrorHandler = (WrappedComponent, axios) => {
                             break;
                         case 400:cogoToast.error(error.data ?error.data:"Something went wrong",{position:"top-right"}).then(clearError);
                             break;
-                        case 404:cogoToast.error(error.data?error.data:"Not Found Error",{position:"top-right"}).then(clearError);
+                        case 404:cogoToast.error("Not Found Error",{position:"top-right"}).then(clearError);
+                            dispatch(actions.logout());
                             break;
                         case 401 :{
                             cogoToast.error("Sign in please",{position:"top-right"}).then(clearError)
@@ -26,7 +27,7 @@ const withErrorHandler = (WrappedComponent, axios) => {
                         default:cogoToast.error("Something went wrong,please refresh the page",{position:"top-right"}).then(clearError);
                     }
                 }else{
-                    cogoToast.error(error,{position:"top-right"}).then(clearError)
+                    cogoToast.error("Network Error",{position:"top-right"}).then(clearError)
                 }
 
             }

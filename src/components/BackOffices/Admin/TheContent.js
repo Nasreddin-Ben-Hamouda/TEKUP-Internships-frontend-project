@@ -1,4 +1,4 @@
-import React, {Suspense} from 'react'
+import React, {Suspense,useEffect} from 'react'
 import {
   Redirect,
   Route,
@@ -23,9 +23,18 @@ const TheContent = (props) => {
     // let linkNode=document.querySelector('style,link[href*="bootstrap.css"]');
     // linkNode.parentNode.removeChild(linkNode)
     let user = useSelector(state => state.user.user);
-    if(user.roleDTO.title!=="ADMIN"){
-        window.location.replace('/')
-    }
+    let token = useSelector(state => state.user.authToken);
+    useEffect(()=>{
+        if(user && token){
+            if(user.roleDTO.title!=="ADMIN"){
+                window.location.replace('/')
+            }
+        }else{
+            //console.log("im here")
+            window.location.replace('/')
+        }
+    },[user,token])
+
   return (
     <TheLayout {...props}>
         <main className="c-main">

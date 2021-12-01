@@ -49,7 +49,6 @@ export const logout = () => {
     return {
         type: actionTypes.AUTH_LOGOUT
     };
-
 };
 
 export const login = (email, password) => {

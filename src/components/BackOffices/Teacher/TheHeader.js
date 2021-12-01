@@ -55,6 +55,9 @@ const TheHeader = (props) => {
                     alt=""
                     width={100}
                     height={30}
+                    style={{
+                        backgroundColor:"black"
+                    }}
                 />
             </CHeaderBrand>
 
