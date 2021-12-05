@@ -59,7 +59,7 @@ export const login = (email, password) => {
             email: email,
             password: password
         };
-        axios.post('/user/login', data)
+        axios.post('/auth/login', data)
             .then(response => {
                 localStorage.setItem('authToken', response.data.authToken);
                 let redirect = null;
@@ -90,7 +90,7 @@ export const getAuthenticatedUser = () => {
             if (!authToken) {
                 dispatch(logout());
             } else {
-                axios.get('/user/whoami')
+                axios.get('/auth/whoami')
                     .then((response) => {
                         dispatch(loginSuccess(response.data,authToken,null));
                         dispatch(takeReadyTrue())

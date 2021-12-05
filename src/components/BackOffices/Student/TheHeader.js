@@ -25,7 +25,7 @@ import logo from "../../../assets/BackOffices/img/logo.png";
 const TheHeader = (props) => {
     const dispatch = useDispatch()
     const sidebarShow = useSelector(state => state.global.sidebarShow);
-    //const user=useSelector(state =>state.user.user)
+    const user=useSelector(state =>state.user.user)
     const toggleSidebar = () => {
         const val = [true, 'responsive'].includes(sidebarShow) ? false : 'responsive'
         dispatch(actions.sidebarShow(val))
@@ -90,7 +90,7 @@ const TheHeader = (props) => {
             </CHeaderNav>
 
             <CHeaderNav className="px-3">
-                <TheHeaderDropdown  avatar={"fak"} fullName={"admin"} {...props}/>
+                <TheHeaderDropdown  avatar={user.photo} fullName={user.firstName+" "+user.lastName} {...props}/>
             </CHeaderNav>
 
             <CSubheader className="px-3 justify-content-between">

@@ -13,12 +13,12 @@ import * as actions from "../../../store/actions/auth/User";
 import {useDispatch} from "react-redux";
 
 const TheHeaderDropdown = (props) => {
-  // let img=null;
-  // if(props.avatar){
-  //   img=process.env.REACT_APP_SUBSCRIPTION_SERVICE+"/storage/avatars/"+props.avatar;
-  // }else{
-  //   img=userImg;
-  // }
+  let img=null;
+  if(props.avatar){
+    img=process.env.REACT_APP_BACKEND_WEB_SERVICE+"/uploads/users/"+props.avatar;
+  }else{
+    img=userImg;
+  }
   const dispatch = useDispatch();
 
   return (
@@ -30,7 +30,7 @@ const TheHeaderDropdown = (props) => {
       <CDropdownToggle className="c-header-nav-link" caret={false}>
         <div className="c-avatar" >
           <CImg
-            src={userImg}
+            src={img}
             className="c-avatar-img"
             style={{width:"36px",
               height:"36px"}}
