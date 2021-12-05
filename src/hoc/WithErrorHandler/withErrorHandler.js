@@ -14,9 +14,11 @@ const withErrorHandler = (WrappedComponent, axios) => {
                     switch (error.status){
                         case 500:cogoToast.error("Server is down",{position:"top-right"}).then(clearError);
                             break;
+                        case 409:cogoToast.error(error.data ?error.data:"Something went wrong",{position:"top-right"}).then(clearError);
+                            break;
                         case 400:cogoToast.error(error.data ?error.data:"Something went wrong",{position:"top-right"}).then(clearError);
                             break;
-                        case 404:cogoToast.error("Not Found Error",{position:"top-right"}).then(clearError);
+                        case 404:cogoToast.error(error.data ?error.data:"Not Found Error",{position:"top-right"}).then(clearError);
                             dispatch(actions.logout());
                             break;
                         case 401 :{

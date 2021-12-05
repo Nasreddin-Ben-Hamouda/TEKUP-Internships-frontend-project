@@ -60,12 +60,12 @@
     }
   ],
   "Contact": {
-    "address": "4321 California St, San Francisco, CA 12345 ",
-    "phone": "+1 123 456 1234",
+    "address": "Z.I Chotrana II Pôle Technologique Elgazala, Ariana, Tunisia ",
+    "phone": "+216 23 814 000",
     "email": "info@company.com",
-    "facebook": "",
-    "twitter": "",
-    "youtube": ""
+    "facebook": "https://www.facebook.com/tekup.de",
+    "twitter": "https://www.twitter.com/TEK__UP",
+    "youtube": "https://www.youtube.com/channel/UCOQH2uLedOdrFbKKbVnwLjA"
   },
   "Features": [
     {
