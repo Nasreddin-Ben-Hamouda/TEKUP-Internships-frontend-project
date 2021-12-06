@@ -19,13 +19,13 @@ export const _nav=
   {
     _tag: 'CSidebarNavItem',
     name: 'Panels',
-    to: `/teacher`,
+    to: `/teacher/panels`,
     icon:'cilWc' ,
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Offers',
-    to: `/teacher`,
+    to: `/teacher/offers`,
     icon:'cilMap' ,
   },
 
@@ -37,13 +37,13 @@ export const _nav=
       {
         _tag: 'CSidebarNavItem',
         name: 'Internship Requests',
-        to: `/teacher`,
+        to: `/teacher/internship/requests`,
         icon:'cilPaperPlane' ,
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Confirmed Internships',
-        to: `/teacher`,
+        to: `/teacher/internship/confirmed`,
         icon:'cilCheck' ,
       },
     ],
@@ -56,13 +56,13 @@ export const _nav=
       {
         _tag: 'CSidebarNavItem',
         name: 'All Defenses',
-        to: `/teacher`,
+        to: `/teacher/defenses`,
         icon:'cilFile' ,
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Calendar',
-        to: `/teacher`,
+        to: `/teacher/defenses/calendar`,
         icon:'cilCalendar' ,
       },
     ],

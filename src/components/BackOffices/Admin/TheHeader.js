@@ -12,6 +12,7 @@ import {
     CLink, CImg
 } from '@coreui/react'
 import CIcon from '@coreui/icons-react'
+import * as icon from '@coreui/icons';
 
 // routes config
 import routes from '../../../routes/BackOffices/Admin/routes'
@@ -65,25 +66,24 @@ const TheHeader = (props) => {
 
                 <CHeaderNavItem className="px-3" >
                     <CHeaderNavLink to={"/administrator/dashboard"}>
-                        <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon icon={icon.cilSpeedometer} width={20}/>&nbsp;
                         Dashboard
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem  className="px-3">
                     <CHeaderNavLink to={"/administrator/dashboard"}>
-                        <CIcon name="cilPeople" customClasses="c-sidebar-nav-icon"/>
-                        Users
+                        <CIcon icon={icon.cilPeople} width={20}/>&nbsp; Users
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
                     <CHeaderNavLink to={"/administrator/dashboard"}>
-                        <CIcon name="cilLayers" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon icon={icon.cilLayers} width={20} />&nbsp;
                         Internships
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
                     <CHeaderNavLink to={"/administrator/dashboard"}>
-                        <CIcon name="cilLaptop" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon icon={icon.cilLaptop} width={20} />&nbsp;
                         Defenses
                     </CHeaderNavLink>
                 </CHeaderNavItem>
@@ -105,11 +105,11 @@ const TheHeader = (props) => {
                         aria-current="page"
                         to={"/administrator/dashboard"}
                     >
-                        <CIcon name="cil-graph" alt="Dashboard" href="#"/>&nbsp;Dashboard
+                        <CIcon icon={icon.cilGraph} width={20} alt="Dashboard" />&nbsp;Dashboard
                     </CLink>
                     <CLink className="c-subheader-nav-link" aria-current="page"
                            to={"/administrator/dashboard"} >
-                        <CIcon name="cil-settings" alt="Settings" />&nbsp;Settings
+                        <CIcon icon={icon.cilSettings} width={20} alt="Dashboard" />&nbsp;Settings
                     </CLink>
                 </div>
             </CSubheader>

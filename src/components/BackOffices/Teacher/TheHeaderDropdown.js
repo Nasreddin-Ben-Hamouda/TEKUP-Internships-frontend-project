@@ -11,6 +11,7 @@ import userImg from '../../../assets/BackOffices/img/user.png'
 import * as actions from "../../../store/actions/auth/User";
 
 import {useDispatch} from "react-redux";
+import * as icon from "@coreui/icons";
 
 const TheHeaderDropdown = (props) => {
   let img=null;
@@ -39,16 +40,16 @@ const TheHeaderDropdown = (props) => {
       </CDropdownToggle>
       <CDropdownMenu className="pt-0" placement="bottom-end">
         <CDropdownItem>
-          <CIcon name="cilCheck" className="mfe-2" />
+          <CIcon icon={icon.cilCheck} width={20} className="mfe-2"/>
           {props.fullName}
         </CDropdownItem>
         <CDropdownItem to={`/teacher/profile`}>
-          <CIcon name="cil-user" className="mfe-2" />
+          <CIcon icon={icon.cilUser} width={20}  className="mfe-2"/>
            Profile
         </CDropdownItem>
         <CDropdownItem divider />
         <CDropdownItem onClick={()=>{dispatch(actions.logout);window.location.replace("/");}}>
-          <CIcon name="cil-lock-locked" className="mfe-2" />
+          <CIcon icon={icon.cilLockLocked} width={20}  className="mfe-2"/>
               Logout
         </CDropdownItem>
       </CDropdownMenu>
