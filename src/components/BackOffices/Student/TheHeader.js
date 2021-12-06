@@ -21,6 +21,7 @@ import {
     TheHeaderDropdown,
 }  from './index'
 import logo from "../../../assets/BackOffices/img/logo.png";
+import * as icon from "@coreui/icons";
 
 const TheHeader = (props) => {
     const dispatch = useDispatch()
@@ -65,25 +66,25 @@ const TheHeader = (props) => {
 
                 <CHeaderNavItem className="px-3" >
                     <CHeaderNavLink to={"/student/dashboard"}>
-                        <CIcon name="cil-speedometer" customClasses="c-sidebar-nav-icon"/>
+                        <CIcon icon={icon.cilSpeedometer} width={20} />&nbsp;
                         Dashboard
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/student/dashboard"}>
-                        <CIcon name="cilMap" customClasses="c-sidebar-nav-icon"/>
+                    <CHeaderNavLink to={"/student/offers"}>
+                        <CIcon icon={icon.cilMap} width={20} />&nbsp;
                         Offers
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/student/dashboard"}>
-                        <CIcon name="cilLayers" customClasses="c-sidebar-nav-icon"/>
+                    <CHeaderNavLink to={"/student/internship/confirmed"}>
+                        <CIcon icon={icon.cilLayers} width={20} />&nbsp;
                         Internships
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/student/dashboard"}>
-                        <CIcon name="cilLaptop" customClasses="c-sidebar-nav-icon"/>
+                    <CHeaderNavLink to={"/student/defenses"}>
+                        <CIcon icon={icon.cilLaptop} width={20} />&nbsp;
                         Defenses
                     </CHeaderNavLink>
                 </CHeaderNavItem>
@@ -105,11 +106,11 @@ const TheHeader = (props) => {
                         aria-current="page"
                         to={"/student/dashboard"}
                     >
-                        <CIcon name="cil-graph" alt="Dashboard" href="#"/>&nbsp;Dashboard
+                        <CIcon icon={icon.cilGraph} width={20} alt="Dashboard" />&nbsp;Dashboard
                     </CLink>
                     <CLink className="c-subheader-nav-link" aria-current="page"
                            to={"/student/dashboard"} >
-                        <CIcon name="cil-settings" alt="Settings" />&nbsp;Settings
+                        <CIcon icon={icon.cilSettings} width={20} alt="Dashboard" />&nbsp;Settings
                     </CLink>
                 </div>
             </CSubheader>

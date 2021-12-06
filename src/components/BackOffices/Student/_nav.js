@@ -19,31 +19,31 @@ export const _nav=
   {
     _tag: 'CSidebarNavItem',
     name: 'Offers',
-    to: `/student`,
+    to: `/student/offers`,
     icon:'cilMap' ,
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Internship Requests',
-    to: `/student`,
+    to: `/student/internship/requests`,
     icon:'cilPaperPlane' ,
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Confirmed Internships',
-    to: `/student`,
+    to: `/student/internship/confirmed`,
     icon:'cilCheck' ,
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Defenses',
-    to: `/student`,
+    to: `/student/defenses`,
     icon:'cilLaptop' ,
   },
   {
     _tag: 'CSidebarNavItem',
     name: 'Calendar',
-    to: `/student`,
+    to: `/student/defenses/calendar`,
     icon:'cilCalendar' ,
   },
 
