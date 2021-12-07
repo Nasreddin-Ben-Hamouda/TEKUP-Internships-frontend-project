@@ -155,24 +155,16 @@ const Offers=(props)=>{
                             </CModalBody>
                         </CModal>
 
-                        <CRow >
-                            <CCol>
-                                <CCard>
-                                    <CCardBody >
-                                        <CCardTitle>
-                                            Create New Offer
+
                                             <CButton style={{float: "right"}} color="info"
                                                      onClick={() =>setVisible(true)}>
                                                 <AddBoxIcon/>
                                             </CButton>
-
-                                        </CCardTitle>
-
-                                    </CCardBody>
-                                </CCard>
-                            </CCol>
-                        </CRow>
                         <br/>
+                        <br/>
+                        <br/>
+
+
                         <CRow >
                             {
                                 offers.length > 0 ?
