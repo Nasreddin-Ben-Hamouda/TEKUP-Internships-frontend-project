@@ -14,29 +14,41 @@ import axios from "../../../../axios/web-service";
 import cogoToast from "cogo-toast";
 import { Popconfirm } from 'antd';
 import "antd/dist/antd.css";
-const Classes = (props) => {
 
+const Users = (props) => {
+    const [users, setUsers] = useState(null);
+    const [roles, setRoles] = useState(null);
     const [classes, setClasses] = useState(null);
-    const [sections, setSections] = useState(null);
     const [details, setDetails] = useState([]);
     const [formUpdate, setFormUpdate] = useState(null);
     const [visible, setVisible] = useState(false);
     const [ loading,setLoading]=useState(false);
 
     useEffect(() => {
-        getAllClasses();
-        getAllSections();
+        getAllUsers()
+        getAllRoles()
+        getAllClasses()
     }, []);
+    const getAllUsers = () => {
+
+        axios.get('/user/list')
+            .then((response) => {
+                setUsers(response.data);
+            })
+    }
+    const getAllRoles = () => {
+        axios.get('/user/roles' )
+            .then((response) => {
+                setRoles(response.data);
+            })
+            .catch((error) => {
+                //all errors handled in withErrorHandler hoc component
+            })
+    }
     const getAllClasses = () => {
         axios.get('/class/list' )
             .then((response) => {
                 setClasses(response.data);
-            })
-    }
-    const getAllSections = () => {
-        axios.get('/section/list' )
-            .then((response) => {
-                setSections(response.data);
             })
     }
     const modalCloseHandle = () => {
@@ -57,11 +69,13 @@ const Classes = (props) => {
 
     const fields = [
 
-        {key: 'name', label: "Name", _style: {width: '20%'}},
-        {key: 'section', label: "Section", _style: {width: '20%'}},
-        {key: 'level', label: "Level", _style: {width: '20%'}},
-        {key: 'nbrStudents', label: "Number of students", _style: {width: '20%'}},
-        {key: 'createdAt', label: "Created At", _style: {width: '20%'}},
+        {key: 'fullName', label: "Full Name"},
+        {key: 'email', label: "Email"},
+        {key: 'cinNumber',label: "Cin Number"},
+        {key: 'phone'},
+        {key: 'role'},
+        {key:'class'},
+        {key:'createdAt'},
         {
             key: 'show_details',
             label: 'Actions',
@@ -75,39 +89,50 @@ const Classes = (props) => {
     const onSubmitAddForm = (data,e) => {
         setLoading(true)
         data = {
-            name:data.name,
-            level:data.level,
-            sectionDTO:{id:data.section}
+            firstName:data.firstName,
+            lastName:data.lastName,
+            email:data.email,
+            password:data.password,
+            phone:data.phone,
+            cinNumber:data.cinNumber,
+            roleDTO:{id:data.role},
+            classeDTO:data.class==="0"?null:{id:data.class}
         }
-        axios.post('/class/create', data)
+        console.log(data)
+        axios.post('/user/create', data)
             .then(() => {
                 setLoading(false)
-                cogoToast.success("Class added successfully", {position: "top-right"})
+                cogoToast.success("User created successfully", {position: "top-right"})
                 modalCloseHandle()
                 e.target.reset()
-                getAllClasses()
+                getAllUsers()
             })
             .catch((error) => {
                 setLoading(false)
             });
     };
 
-    const onSubmitUpdateForm = (data) => {
+    const onSubmitUpdateForm = (data,e) => {
         setLoading(true)
         data = {
             id:data.id,
-            name:data.name,
-            level:data.level,
-            sectionDTO:{id:data.section}
+            firstName:data.firstName,
+            lastName:data.lastName,
+            email:data.email,
+            password:data.password!==""?data.password:null,
+            phone:data.phone,
+            cinNumber:data.cinNumber,
+            roleDTO:data.role?{id:data.role}:null,
+            classeDTO:data.class==="0"?null:{id:data.class}
         }
-        axios.put(`/class/${data.id}/update`, data)
+        console.log(data)
+        axios.put(`/user/${data.id}/update`, data)
             .then(() => {
                 setLoading(false)
-                cogoToast.success("Class updated successfully", {position: "top-right"})
+                cogoToast.success("User updated successfully", {position: "top-right"})
                 modalCloseHandle()
-                getAllClasses()
-                setDetails([])
-
+                e.target.reset()
+                getAllUsers()
             })
             .catch((error) => {
                 setLoading(false)
@@ -115,43 +140,45 @@ const Classes = (props) => {
     };
 
     const showUpdateForm = (id) => {
-        const index = classes.findIndex((classe) => classe.id === id);
-        const classe={
-            ...classes[index],
-            section:classes[index].sectionDTO!==null?classes[index].sectionDTO.id:null
+        const index = users.findIndex((user) => user.id === id);
+        const user={
+            ...users[index],
+            role:users[index].roleDTO!==null?users[index].roleDTO.id:null,
+            class:users[index].classeDTO!==null?users[index].classeDTO.id:"0",
+            password:null
         }
-        setFormUpdate(classe)
+        setFormUpdate(user)
         setVisible(true)
     }
 
     const deleteCustomerHandler = (id) => {
-
-        axios.delete(`/class/${id}/delete`)
+        axios.delete(`/user/${id}/delete`)
             .then(() => {
-                cogoToast.success("Class deleted successfully", {position: "top-right"})
-                getAllClasses()
+                cogoToast.success("User deleted successfully", {position: "top-right"})
+                getAllUsers()
                 setDetails([])
             })
     }
+
 
     return (
 
 
         <>
             {
-                !classes ? <CSpinner color="info" style={{marginLeft: "45%", marginTop: "15%"}}/>
+                !users ? <CSpinner color="info" style={{marginLeft: "45%", marginTop: "15%"}}/>
                     :
                     <>
                         <CModal show={visible} onClose={modalCloseHandle}>
-                            <CModalHeader closeButton> {!formUpdate ? "Add Class" : "Update Class"}</CModalHeader>
+                            <CModalHeader closeButton> {!formUpdate ? "Add User" : "Update User"}</CModalHeader>
                             <br/>
                             <CModalBody>
                                 {
-                                    sections?
+                                    roles && classes?
                                         formUpdate ?
-                                            <UseFormUpdate sections={sections} loading={loading} preloadedValues={formUpdate} onSubmit={onSubmitUpdateForm}/> :
-                                            <UseForm sections={sections} loading={loading} onSubmit={onSubmitAddForm}/>
-                                     :
+                                            <UseFormUpdate loading={loading} classes={classes} roles={roles} preloadedValues={formUpdate} onSubmit={onSubmitUpdateForm}/> :
+                                            <UseForm loading={loading} classes={classes} roles={roles} onSubmit={onSubmitAddForm}/>
+                                    :
                                         <CSpinner color="info" style={{marginLeft: "45%"}}/>
                                 }
                             </CModalBody>
@@ -165,7 +192,7 @@ const Classes = (props) => {
                             </CCardHeader>
                             <CCardBody>
                                 <CDataTable
-                                    items={classes}
+                                    items={users}
                                     fields={fields}
                                     columnFilter
                                     tableFilter
@@ -175,22 +202,28 @@ const Classes = (props) => {
                                     sorter
                                     pagination
                                     scopedSlots={{
-                                        'section':
-                                            (item) => (
-                                                <td>
-                                                    {item.sectionDTO.title}
-                                                </td>
-                                            ),
-                                        'nbrStudents':
-                                            (item) => (
-                                                <td>
-                                                    {item.usersDTO.length}
-                                                </td>
-                                            ),
                                         'createdAt':
                                             (item) => (
                                                 <td>
                                                     {new Date(item.createdAt).toLocaleDateString('en-us', { weekday:"long", year:"numeric", month:"short", day:"numeric"})}
+                                                </td>
+                                            ),
+                                        'fullName':
+                                            (item) => (
+                                                <td>
+                                                    {item.firstName+" "+item.lastName}
+                                                </td>
+                                            ),
+                                        'role':
+                                            (item) => (
+                                                <td>
+                                                    {item.roleDTO.title}
+                                                </td>
+                                            ),
+                                        'class':
+                                            (item) => (
+                                                <td>
+                                                    {item.classeDTO? item.classeDTO.name:"Not Defined"}
                                                 </td>
                                             ),
                                         'show_details':
@@ -220,7 +253,7 @@ const Classes = (props) => {
                                                                      onClick={() => showUpdateForm(item.id)}>
                                                                 Edit
                                                             </CButton>
-                                                            <Popconfirm title="Are you sure？" okText="Yes" onConfirm={() => deleteCustomerHandler(item.id)}
+                                                            <Popconfirm title="Are you sure？,All records linked with this user(offers,internships...) will be deleted" okText="Yes" onConfirm={() => deleteCustomerHandler(item.id)}
                                                                         cancelText="No">
 
                                                                 <CButton size="sm" color="danger" className="ml-1">
@@ -241,4 +274,4 @@ const Classes = (props) => {
     )
 }
 
-export default Classes ;
+export default Users;

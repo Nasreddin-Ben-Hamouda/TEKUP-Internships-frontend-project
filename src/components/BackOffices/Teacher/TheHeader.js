@@ -70,14 +70,14 @@ const TheHeader = (props) => {
                         Dashboard
                     </CHeaderNavLink>
                 </CHeaderNavItem>
-                <CHeaderNavItem  className="px-3">
-                    <CHeaderNavLink to={"/teacher/panels"}>
-                        <CIcon icon={icon.cilWc} width={20} />&nbsp;
-                        Panels
-                    </CHeaderNavLink>
-                </CHeaderNavItem>
+                {/*<CHeaderNavItem  className="px-3">*/}
+                {/*    <CHeaderNavLink to={"/teacher/panels"}>*/}
+                {/*        <CIcon icon={icon.cilWc} width={20} />&nbsp;*/}
+                {/*        Panels*/}
+                {/*    </CHeaderNavLink>*/}
+                {/*</CHeaderNavItem>*/}
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/teacher/internship/confirmed"}>
+                    <CHeaderNavLink to={"/teacher/internships/confirmed"}>
                         <CIcon icon={icon.cilLayers} width={20} />&nbsp;
                         Internships
                     </CHeaderNavLink>

@@ -5,6 +5,7 @@ const Profile =lazy(() => import('../../../views/BackOffices/Admin/Profile/Profi
 const Offers =lazy(() => import('../../../views/BackOffices/Admin/Offers/Offers'));
 const Sections =lazy(() => import('../../../views/BackOffices/Admin/Sections/Sections'));
 const Classes =lazy(() => import('../../../views/BackOffices/Admin/Classes/Classes'));
+const Users =lazy(() => import('../../../views/BackOffices/Admin/Users/Users'));
 
 const routes = [
     { path: '/administrator',exact: true, name: 'Administrator' },
@@ -13,6 +14,7 @@ const routes = [
     { path: '/administrator/offers',exact: true, name: 'Offers', component: Offers },
     { path: '/administrator/sections',exact: true, name: 'Sections', component: Sections },
     { path: '/administrator/classes',exact: true, name: 'Classes', component: Classes },
+    { path: '/administrator/users',exact: true, name: 'Users', component: Users },
 ];
 
 export default routes;

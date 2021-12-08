@@ -22,12 +22,12 @@ export const _nav=
       icon:'cilPeople' ,
     },
 
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Panels',
-    to: `/administrator/panels`,
-    icon:'cilWc' ,
-  },
+  // {
+  //   _tag: 'CSidebarNavItem',
+  //   name: 'Panels',
+  //   to: `/administrator/panels`,
+  //   icon:'cilWc' ,
+  // },
   {
     _tag: 'CSidebarNavItem',
     name: 'Offers',

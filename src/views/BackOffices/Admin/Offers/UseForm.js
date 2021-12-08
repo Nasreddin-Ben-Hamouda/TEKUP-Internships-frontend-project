@@ -47,7 +47,7 @@ const UseForm = ({onSubmit,loading,debounceKey,dropZoneOnChange}) => {
                             key={debounceKey}
                             showAlerts={['error']}
                             onChange={(files)=>dropZoneOnChange(files)}
-                            maxFileSize={2.E7}
+                            maxFileSize={3.E7}
                             // initialFiles={
                             //     [
                             //         "http://localhost:8080/uploads/users/-1636191997.jpg",

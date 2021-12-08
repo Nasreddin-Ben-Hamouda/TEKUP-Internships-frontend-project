@@ -16,12 +16,12 @@ export const _nav=
       _children: ['Management']
     },
 
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Panels',
-    to: `/teacher/panels`,
-    icon:'cilWc' ,
-  },
+  // {
+  //   _tag: 'CSidebarNavItem',
+  //   name: 'Panels',
+  //   to: `/teacher/panels`,
+  //   icon:'cilWc' ,
+  // },
   {
     _tag: 'CSidebarNavItem',
     name: 'Offers',
