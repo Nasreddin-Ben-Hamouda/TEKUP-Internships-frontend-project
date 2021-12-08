@@ -26,7 +26,7 @@ export const _nav=
     _tag: 'CSidebarNavItem',
     name: 'Internships',
     to: `/student/internships`,
-    icon:'cilPaperPlane' ,
+    icon:'cilLayers' ,
   },
   {
     _tag: 'CSidebarNavItem',
