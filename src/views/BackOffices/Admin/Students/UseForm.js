@@ -6,23 +6,21 @@ import * as yup from "yup";
 import {errorsStyle,inputBorderErrorsStyle} from "../../../../helpers/utility";
 const schema = yup.object().shape({
     firstName:yup.string().required("first name is a required field")
-        .min(4,"first name must be at least 4 characters")
-        .max(55,"first name must be at most 55 characters"),
+            .min(4,"first name must be at least 4 characters")
+            .max(55,"first name must be at most 55 characters"),
     lastName:yup.string().required("last name is a required field")
         .min(4,"last name must be at least 4 characters")
         .max(55,"last name must be at most 55 characters"),
-    //password:yup.string().required().min(6).max(55),
+    password:yup.string().required().min(6).max(55),
     cinNumber:yup.string().max(8),
     email:yup.string().email().required(),
     phone:yup.string().max(8),
-
-    role:yup.string().required()
+    class:yup.string().required()
 });
-const UseFormUpdate = ({preloadedValues,onSubmit,loading,roles}) => {
+const UseForm = ({onSubmit,loading,classes}) => {
 
     const {register, handleSubmit, formState: {errors}} = useForm({
-        resolver: yupResolver(schema),
-        defaultValues:preloadedValues
+        resolver: yupResolver(schema)
     });
 
     return (
@@ -49,13 +47,13 @@ const UseFormUpdate = ({preloadedValues,onSubmit,loading,roles}) => {
                 <div className="form-row">
                     <div className="form-group col-md-6">
                         <label>Email *</label>
-                        <input type="email" className="form-control"
+                        <input type="email" className="form-control" autoComplete="off"
                                style={errors.email ? inputBorderErrorsStyle : null} {...register("email")}
                                placeholder={"Enter your email"}/>
                         <p style={errorsStyle}>{errors.email?.message}</p>
                     </div>
                     <div className="form-group col-md-6">
-                        <label>Password </label>
+                        <label>Password *</label>
                         <input type="password" className="form-control" autoComplete="off"
                                style={errors.password ? inputBorderErrorsStyle : null} {...register("password")}
                                placeholder={"Enter your password"}/>
@@ -80,18 +78,14 @@ const UseFormUpdate = ({preloadedValues,onSubmit,loading,roles}) => {
                     </div>
                 </div>
                 <div className="form-row">
-
                     <div className="form-group col-md-12">
-                        <label>Role</label>
-                        <select className="form-control" style={errors.role?inputBorderErrorsStyle:null} {...register("role")} >
-                            {roles? roles.map((role,index)=>{
-                                if(role.title!=="STUDENT"){
-                                    return (<option key={index}  value={role.id} >{role.title}</option>)
-                                }
-                                return null
+                        <label>Class</label>
+                        <select className="form-control"   style={errors.class?inputBorderErrorsStyle:null} {...register("class")} >
+                            {classes? classes.map((classe,index)=>{
+                                return (<option key={index}  value={classe.id} >{classe.name}</option>)
                             }):null}
                         </select>
-                        <p style={errorsStyle}>{errors.role?.message}</p>
+                        <p style={errorsStyle}>{errors.class?.message}</p>
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary" disabled={loading}>Save
@@ -107,4 +101,4 @@ const UseFormUpdate = ({preloadedValues,onSubmit,loading,roles}) => {
     )
 }
 
-export default UseFormUpdate;
+export default UseForm;

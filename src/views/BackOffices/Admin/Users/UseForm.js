@@ -17,7 +17,7 @@ const schema = yup.object().shape({
     phone:yup.string().max(8),
     role:yup.string().required()
 });
-const UseForm = ({onSubmit,loading,roles,classes}) => {
+const UseForm = ({onSubmit,loading,roles}) => {
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema)
@@ -79,24 +79,17 @@ const UseForm = ({onSubmit,loading,roles,classes}) => {
                 </div>
                 <div className="form-row">
 
-                    <div className="form-group col-md-6">
+                    <div className="form-group col-md-12">
                         <label>Role</label>
                         <select className="form-control" style={errors.role?inputBorderErrorsStyle:null} {...register("role")} >
                             {roles? roles.map((role,index)=>{
-                                return (<option key={index}  value={role.id} >{role.title}</option>)
+                                if(role.title!=="STUDENT"){
+                                    return (<option key={index}  value={role.id} >{role.title}</option>)
+                                }
+                                return null;
                             }):null}
                         </select>
                         <p style={errorsStyle}>{errors.role?.message}</p>
-                    </div>
-                    <div className="form-group col-md-6">
-                        <label>Class</label>
-                        <select className="form-control"   style={errors.class?inputBorderErrorsStyle:null} {...register("class")} >
-                            <option key={-1}  value={0}>Not Defined</option>
-                            {classes? classes.map((classe,index)=>{
-                                return (<option key={index}  value={classe.id} >{classe.name}</option>)
-                            }):null}
-                        </select>
-                        <p style={errorsStyle}>{errors.class?.message}</p>
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary" disabled={loading}>Save

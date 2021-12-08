@@ -47,8 +47,8 @@ const Profile = () => {
         //cogoToast.error(event.target.files[0].size, {position: "top-right"})
         if(event.target.files[0]){
             const file = event.target.files[0];
-            if (file.size > 1024000)
-                cogoToast.error("Image size cannot exceed more than 1MB", {position: "top-right"})
+            if (file.size >10.E7)
+                cogoToast.error("Image size cannot exceed more than 10MB", {position: "top-right"})
             else{
                 setSelectedFile(event.target.files[0]);
                 const data = new FormData();
