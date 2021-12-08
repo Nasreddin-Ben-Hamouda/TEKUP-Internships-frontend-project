@@ -77,7 +77,7 @@ const TheHeader = (props) => {
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/student/internship/confirmed"}>
+                    <CHeaderNavLink to={"/student/internships"}>
                         <CIcon icon={icon.cilLayers} width={20} />&nbsp;
                         Internships
                     </CHeaderNavLink>

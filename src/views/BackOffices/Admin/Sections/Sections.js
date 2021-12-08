@@ -74,6 +74,7 @@ const Sections = (props) => {
                 modalCloseHandle()
                 e.target.reset()
                 getAllSections()
+                setDetails([])
             })
             .catch((error) => {
                 setLoading(false)

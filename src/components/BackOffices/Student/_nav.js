@@ -24,15 +24,9 @@ export const _nav=
   },
   {
     _tag: 'CSidebarNavItem',
-    name: 'Internship Requests',
-    to: `/student/internship/requests`,
+    name: 'Internships',
+    to: `/student/internships`,
     icon:'cilPaperPlane' ,
-  },
-  {
-    _tag: 'CSidebarNavItem',
-    name: 'Confirmed Internships',
-    to: `/student/internship/confirmed`,
-    icon:'cilCheck' ,
   },
   {
     _tag: 'CSidebarNavItem',

@@ -15,6 +15,13 @@ export const _nav=
       _tag: 'CSidebarNavTitle',
       _children: ['Management']
     },
+
+    {
+      _tag: 'CSidebarNavItem',
+      name: 'Students',
+      to: `/administrator/students`,
+      icon:'cilUserFemale' ,
+    },
     {
       _tag: 'CSidebarNavItem',
       name: 'Users',
@@ -22,12 +29,7 @@ export const _nav=
       icon:'cilPeople' ,
     },
 
-  // {
-  //   _tag: 'CSidebarNavItem',
-  //   name: 'Panels',
-  //   to: `/administrator/panels`,
-  //   icon:'cilWc' ,
-  // },
+
   {
     _tag: 'CSidebarNavItem',
     name: 'Offers',

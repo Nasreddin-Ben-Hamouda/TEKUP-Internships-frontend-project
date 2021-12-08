@@ -15,9 +15,10 @@ import cogoToast from "cogo-toast";
 import { Popconfirm } from 'antd';
 import "antd/dist/antd.css";
 
-const Users = (props) => {
+const Students = (props) => {
     const [users, setUsers] = useState(null);
     const [roles, setRoles] = useState(null);
+    const [classes, setClasses] = useState(null);
     const [details, setDetails] = useState([]);
     const [formUpdate, setFormUpdate] = useState(null);
     const [visible, setVisible] = useState(false);
@@ -26,13 +27,14 @@ const Users = (props) => {
     useEffect(() => {
         getAllUsers()
         getAllRoles()
+        getAllClasses()
     }, []);
     const getAllUsers = () => {
 
         axios.get('/user/list')
             .then((response) => {
-                const users = response.data.filter((item) => item.roleDTO.title ==="ADMIN" || item.roleDTO.title ==="TEACHER")
-                setUsers(users);
+                const stds = response.data.filter((item) => item.roleDTO.title ==="STUDENT")
+                setUsers(stds);
             })
     }
     const getAllRoles = () => {
@@ -44,7 +46,12 @@ const Users = (props) => {
                 //all errors handled in withErrorHandler hoc component
             })
     }
-
+    const getAllClasses = () => {
+        axios.get('/class/list' )
+            .then((response) => {
+                setClasses(response.data);
+            })
+    }
     const modalCloseHandle = () => {
         setFormUpdate(null)
         setVisible(false);
@@ -67,7 +74,7 @@ const Users = (props) => {
         {key: 'email', label: "Email"},
         {key: 'cinNumber',label: "Cin Number"},
         {key: 'phone'},
-        {key: 'role'},
+        {key:'class'},
         {key:'createdAt'},
         {
             key: 'show_details',
@@ -81,6 +88,12 @@ const Users = (props) => {
 
     const onSubmitAddForm = (data,e) => {
         setLoading(true)
+        let studentRole=roles.filter((item) => item.title ==="STUDENT")
+        if(studentRole.length > 0){
+            studentRole =studentRole[0];
+        }else{
+            studentRole =null;
+        }
         data = {
             firstName:data.firstName,
             lastName:data.lastName,
@@ -88,12 +101,13 @@ const Users = (props) => {
             password:data.password,
             phone:data.phone,
             cinNumber:data.cinNumber,
-            roleDTO:{id:data.role},
+            roleDTO:{id:studentRole!==null?studentRole.id:null},
+            classeDTO:data.class==="0"?null:{id:data.class}
         }
         axios.post('/user/create', data)
             .then(() => {
                 setLoading(false)
-                cogoToast.success("User created successfully", {position: "top-right"})
+                cogoToast.success("Student created successfully", {position: "top-right"})
                 modalCloseHandle()
                 e.target.reset()
                 getAllUsers()
@@ -105,6 +119,12 @@ const Users = (props) => {
     };
 
     const onSubmitUpdateForm = (data,e) => {
+        let studentRole=roles.filter((item) => item.title ==="STUDENT")
+        if(studentRole.length > 0){
+            studentRole =studentRole[0];
+        }else{
+            studentRole =null;
+        }
         setLoading(true)
         data = {
             id:data.id,
@@ -114,13 +134,13 @@ const Users = (props) => {
             password:data.password!==""?data.password:null,
             phone:data.phone,
             cinNumber:data.cinNumber,
-            roleDTO:data.role?{id:data.role}:null,
+            roleDTO:{id:studentRole!==null?studentRole.id:null},
+            classeDTO:data.class==="0"?null:{id:data.class}
         }
-        console.log(data)
         axios.put(`/user/${data.id}/update`, data)
             .then(() => {
                 setLoading(false)
-                cogoToast.success("User updated successfully", {position: "top-right"})
+                cogoToast.success("Student updated successfully", {position: "top-right"})
                 modalCloseHandle()
                 e.target.reset()
                 getAllUsers()
@@ -135,7 +155,7 @@ const Users = (props) => {
         const index = users.findIndex((user) => user.id === id);
         const user={
             ...users[index],
-            role:users[index].roleDTO!==null?users[index].roleDTO.id:null,
+            class:users[index].classeDTO!==null?users[index].classeDTO.id:"0",
             password:null
         }
         setFormUpdate(user)
@@ -145,7 +165,7 @@ const Users = (props) => {
     const deleteCustomerHandler = (id) => {
         axios.delete(`/user/${id}/delete`)
             .then(() => {
-                cogoToast.success("User deleted successfully", {position: "top-right"})
+                cogoToast.success("Student deleted successfully", {position: "top-right"})
                 getAllUsers()
                 setDetails([])
             })
@@ -165,10 +185,10 @@ const Users = (props) => {
                             <br/>
                             <CModalBody>
                                 {
-                                    roles?
+                                    roles && classes?
                                         formUpdate ?
-                                            <UseFormUpdate loading={loading}  roles={roles} preloadedValues={formUpdate} onSubmit={onSubmitUpdateForm}/> :
-                                            <UseForm loading={loading} roles={roles} onSubmit={onSubmitAddForm}/>
+                                            <UseFormUpdate loading={loading} classes={classes}  preloadedValues={formUpdate} onSubmit={onSubmitUpdateForm}/> :
+                                            <UseForm loading={loading} classes={classes} onSubmit={onSubmitAddForm}/>
                                     :
                                         <CSpinner color="info" style={{marginLeft: "45%"}}/>
                                 }
@@ -205,10 +225,10 @@ const Users = (props) => {
                                                     {item.firstName+" "+item.lastName}
                                                 </td>
                                             ),
-                                        'role':
+                                        'class':
                                             (item) => (
                                                 <td>
-                                                    {item.roleDTO.title}
+                                                    {item.classeDTO? item.classeDTO.name:"Not Defined"}
                                                 </td>
                                             ),
                                         'show_details':
@@ -259,4 +279,4 @@ const Users = (props) => {
     )
 }
 
-export default Users;
+export default Students;

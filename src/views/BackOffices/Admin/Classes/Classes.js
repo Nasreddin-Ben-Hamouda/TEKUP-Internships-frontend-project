@@ -86,6 +86,7 @@ const Classes = (props) => {
                 modalCloseHandle()
                 e.target.reset()
                 getAllClasses()
+                setDetails([])
             })
             .catch((error) => {
                 setLoading(false)

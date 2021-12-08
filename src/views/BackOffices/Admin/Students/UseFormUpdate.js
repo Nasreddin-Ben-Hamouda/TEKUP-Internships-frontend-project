@@ -15,10 +15,9 @@ const schema = yup.object().shape({
     cinNumber:yup.string().max(8),
     email:yup.string().email().required(),
     phone:yup.string().max(8),
-
-    role:yup.string().required()
+    class:yup.string().required()
 });
-const UseFormUpdate = ({preloadedValues,onSubmit,loading,roles}) => {
+const UseFormUpdate = ({preloadedValues,onSubmit,loading,classes}) => {
 
     const {register, handleSubmit, formState: {errors}} = useForm({
         resolver: yupResolver(schema),
@@ -80,18 +79,14 @@ const UseFormUpdate = ({preloadedValues,onSubmit,loading,roles}) => {
                     </div>
                 </div>
                 <div className="form-row">
-
                     <div className="form-group col-md-12">
-                        <label>Role</label>
-                        <select className="form-control" style={errors.role?inputBorderErrorsStyle:null} {...register("role")} >
-                            {roles? roles.map((role,index)=>{
-                                if(role.title!=="STUDENT"){
-                                    return (<option key={index}  value={role.id} >{role.title}</option>)
-                                }
-                                return null
+                        <label>Class</label>
+                        <select className="form-control"   style={errors.class?inputBorderErrorsStyle:null} {...register("class")} >
+                            {classes? classes.map((classe,index)=>{
+                                return (<option key={index}  value={classe.id} >{classe.name}</option>)
                             }):null}
                         </select>
-                        <p style={errorsStyle}>{errors.role?.message}</p>
+                        <p style={errorsStyle}>{errors.class?.message}</p>
                     </div>
                 </div>
                 <button type="submit" className="btn btn-primary" disabled={loading}>Save
