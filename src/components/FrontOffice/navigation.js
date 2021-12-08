@@ -61,11 +61,6 @@ const Navigation = (props) => {
               </a>
             </li>
             <li>
-              <a href='#portfolio' className='page-scroll'>
-                Internship Offers
-              </a>
-            </li>
-            <li>
               <a href='#contact'  className='page-scroll'>
                 Contact
               </a>
