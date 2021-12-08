@@ -54,7 +54,7 @@ const UseFormUpdate = ({preloadedValues,onSubmit,loading,debounceKey,dropZoneOnC
                             showAlerts={['error']}
                             showPreviews={false}
                             onChange={(files)=>dropZoneOnChange(files)}
-                            maxFileSize={2e+7}
+                            maxFileSize={3e+7}
                             initialFiles={initialFiles}
                         />
                     </div>

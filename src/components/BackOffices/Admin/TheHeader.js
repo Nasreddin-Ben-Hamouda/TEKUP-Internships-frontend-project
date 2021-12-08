@@ -71,18 +71,18 @@ const TheHeader = (props) => {
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem  className="px-3">
-                    <CHeaderNavLink to={"/administrator/dashboard"}>
+                    <CHeaderNavLink to={"/administrator/users"}>
                         <CIcon icon={icon.cilPeople} width={20}/>&nbsp; Users
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/administrator/dashboard"}>
+                    <CHeaderNavLink to={"/administrator/internships/confirmed"}>
                         <CIcon icon={icon.cilLayers} width={20} />&nbsp;
                         Internships
                     </CHeaderNavLink>
                 </CHeaderNavItem>
                 <CHeaderNavItem className="px-3">
-                    <CHeaderNavLink to={"/administrator/dashboard"}>
+                    <CHeaderNavLink to={"/administrator/defenses"}>
                         <CIcon icon={icon.cilLaptop} width={20} />&nbsp;
                         Defenses
                     </CHeaderNavLink>
