@@ -7,6 +7,8 @@ const Sections =lazy(() => import('../../../views/BackOffices/Admin/Sections/Sec
 const Classes =lazy(() => import('../../../views/BackOffices/Admin/Classes/Classes'));
 const Users =lazy(() => import('../../../views/BackOffices/Admin/Users/Users'));
 const Students =lazy(() => import('../../../views/BackOffices/Admin/Students/Students'));
+const InternshipsConfirmed =lazy(() => import('../../../views/BackOffices/Admin/Internships/InternshipsConfirmed'));
+const InternshipsRequests =lazy(() => import('../../../views/BackOffices/Admin/Internships/InternshipsRequests'));
 
 const routes = [
     { path: '/administrator',exact: true, name: 'Administrator' },
@@ -17,6 +19,8 @@ const routes = [
     { path: '/administrator/classes',exact: true, name: 'Classes', component: Classes },
     { path: '/administrator/users',exact: true, name: 'Users', component: Users },
     { path: '/administrator/students',exact: true, name: 'Students', component: Students },
+    { path: '/administrator/internships/confirmed',exact: true, name: 'Internships / Confirmed', component: InternshipsConfirmed },
+    { path: '/administrator/internships/requests',exact: true, name: 'Internships / Requests', component: InternshipsRequests },
 ];
 
 export default routes;

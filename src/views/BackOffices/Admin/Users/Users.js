@@ -142,6 +142,7 @@ const Users = (props) => {
         setVisible(true)
     }
 
+
     const deleteCustomerHandler = (id) => {
         axios.delete(`/user/${id}/delete`)
             .then(() => {

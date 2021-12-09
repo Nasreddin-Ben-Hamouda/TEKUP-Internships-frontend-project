@@ -37,13 +37,13 @@ export const _nav=
       {
         _tag: 'CSidebarNavItem',
         name: 'Internship Requests',
-        to: `/teacher/internship/requests`,
+        to: `/teacher/internships/requests`,
         icon:'cilPaperPlane' ,
       },
       {
         _tag: 'CSidebarNavItem',
         name: 'Confirmed Internships',
-        to: `/teacher/internship/confirmed`,
+        to: `/teacher/internships/confirmed`,
         icon:'cilCheck' ,
       },
     ],
